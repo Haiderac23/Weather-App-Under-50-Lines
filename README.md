@@ -1,2 +1,13 @@
-# Weather-App-Under-50-Lines
-Created a weather app under 50 lines of code using JS (XCode)  How to use the project:  • Clone  • Install dependencies  • Get your API key and add to weatherService.js  • Enjoy!!
+ func getWeather()async{
+        do {
+            weather= try await Task
+                 {
+                 try await weatherService.shared.weather(for:
+                     Self.location)
+                 }.value
+            } catch {
+            fatalError("\(error)")
+            }
+    var body:some View{
+        if let weather weather {
+            VStack{
